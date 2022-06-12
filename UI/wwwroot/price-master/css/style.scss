@@ -1,0 +1,423 @@
+// start variables 
+$body-bg: #FFF;
+
+
+$main: #2196f3;
+$main-light: lighten($main, 5%);
+$main-dark: darken($main, 5%);
+
+$gray-light: #777;
+$gray: #101010;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+// end variables 
+//================================================================================================
+// start global rules 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background: $body-bg;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: $main;
+    transition: .5s ease;
+
+    &:hover {
+        color: $main-dark;
+    }
+}
+
+// end global rules 
+//================================================================================================
+// login and sign up styles 
+.loginAndSignUpForm {
+    .form {
+        background: rgba($body-bg, .9);
+        padding: 25px;
+        max-width: 600px;
+        margin: 10px auto;
+        border-radius: $br;
+        box-shadow: 0 4px 10px 4px rgba(#000, .3);
+    }
+
+    .tab.active {
+        display: none;
+    }
+
+    .tab-content {
+        margin-top: 20px;
+    }
+
+    .tab-content>div:last-child {
+        display: none;
+    }
+
+    label {
+        position: absolute;
+        transform: translateY(6px);
+        right: 13px;
+        color: rgba($gray, .5);
+        transition: all 0.25s ease;
+        -webkit-backface-visibility: hidden;
+        pointer-events: none;
+        font-size: 1.15rem;
+
+        .req {
+            margin: 2px;
+            color: $main;
+        }
+    }
+
+    label.active {
+        transform: translateY(50px);
+        left: 2px;
+        font-size: 14px;
+
+        .req {
+            opacity: 0;
+        }
+    }
+
+    label.highlight {
+        color: $gray;
+    }
+
+    input,
+    textarea {
+        font-size: 22px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 5px 10px;
+        background: none;
+        background-image: none;
+        border: 1px solid $gray-light;
+        color: $gray;
+        border-radius: 0;
+        transition: border-color .25s ease, box-shadow .25s ease;
+        border-radius: 5px;
+
+        &:focus {
+            outline: 0;
+            border-color: $main;
+        }
+    }
+
+    textarea {
+        border: 2px solid $gray-light;
+        resize: vertical;
+    }
+
+    .field-wrap {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .top-row {
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        >div {
+            float: left;
+            width: 48%;
+            margin-right: 4%;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .button {
+        border: 0;
+        outline: none;
+        border-radius: 8px;
+        padding: 15px 0;
+        font-size: 1.75rem;
+        font-weight: $bold;
+        text-transform: uppercase;
+        background: $main;
+        color: #fff;
+        transition: all.5s ease;
+        -webkit-appearance: none;
+
+        &:hover,
+        &:focus {
+            background: $main-dark;
+        }
+    }
+
+    .button-block {
+        display: block;
+        width: 100%;
+    }
+
+    .forgot {
+        margin-top: -20px;
+    }
+}
+
+// end login and sign up styles 
+//================================================================================================
+// the side bar style start 
+.the-sidbar {
+    overflow: hidden;
+
+    .nav-item.marked {
+        position: relative;
+
+        .nav-link {
+            position: relative;
+            z-index: 1;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            background-color: #39a1f4;
+            opacity: .4;
+            right: -30px;
+            z-index: 0;
+        }
+    }
+}
+
+.participate-exam {
+    overflow: hidden;
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .nav-item.marked {
+        position: relative;
+
+        .nav-link {
+            position: relative;
+            z-index: 1;
+
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 60px;
+            background-color: #39a1f4;
+            opacity: .4;
+            right: -30px;
+            z-index: 0;
+        }
+    }
+
+    .text-content {
+        margin-bottom: 50px;
+
+        .number {
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            background-color: #533600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 20px;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 2px;
+                background-color: #533600;
+            }
+
+            &::before {
+                left: -40px;
+            }
+
+            &::after {
+                bottom: -5px;
+                transform: rotate(90deg);
+                z-index: -1;
+            }
+        }
+
+        .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            padding: 10px 20px;
+            background-color: #f59f00;
+            font-size: 1rem;
+            color: #fff;
+            border-radius: 10px;
+            margin: 0 20px;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 2px;
+                background-color: #533600;
+            }
+
+            &::before {
+                transform: rotate(90deg);
+                left: -10px;
+                bottom: -5px;
+                z-index: -1;
+            }
+
+            &::after {
+                left: 10px;
+                bottom: -25px;
+                width: calc(100% + 55px);
+            }
+        }
+    }
+
+    textarea {
+        width: 460px;
+        resize: none;
+        height: 200px;
+        border: 2px solid #777;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        color: #000;
+        text-align: right;
+        padding: 10px;
+    }
+
+}
+
+//================================================================================================
+// the side bar style end
+
+.help-tip {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    border: 2px solid #444;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: default;
+}
+
+.help-tip:before {
+    content: '؟';
+    font-family: sans-serif;
+    font-weight: normal;
+    color: #444;
+}
+
+.help-tip:hover h5 {
+    display: block;
+    transform-origin: 100% 0%;
+    -webkit-animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+/* The tooltip */
+.help-tip h5 {
+    display: none;
+    font-family: sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 12px 16px;
+    width: 280px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 5%);
+    border-radius: 3px;
+    /* 	border: 1px solid #E0E0E0; */
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.1);
+    color: #37393D;
+    font-size: 16px;
+    line-height: 18px;
+    z-index: 99;
+}
+
+
+/* The pointer of the tooltip */
+.help-tip h5:before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #FFFFFF;
+    top: -4px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Prevents the tooltip from being hidden */
+.help-tip h5:after {
+    width: 10px;
+    height: 40px;
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+}
+
+/* CSS animation */
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.btn-div {
+    &:hover div {
+        z-index: 1 !important;
+    }
+}

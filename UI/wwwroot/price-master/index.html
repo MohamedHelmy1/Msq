@@ -1,9 +1,3 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = null;
-}
-@inject BLL.catogeryRep.ICatogeryRep catogery
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -13,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="This is a website for siling machiens">
     <!-- link bootstrab css -->
-    <link rel="stylesheet" href="~/price-master/css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="css/bootstrap.rtl.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <!-- link fontawesome css -->
-    <link rel="stylesheet" href="~/price-master/css/all.css">
+    <link rel="stylesheet" href="css/all.css">
     <!-- link dropify css  -->
-    <link rel="stylesheet" href="~/price-master/css/dropify.min.css">
+    <link rel="stylesheet" href="css/dropify.min.css">
     <!-- link animation css  -->
-    <link rel="stylesheet" href="~/price-master/css/animate.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
     <!-- google font link  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +22,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <!-- custom style  -->
-    <link rel="stylesheet" href="~/price-master/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Home</title>
 </head>
 
@@ -263,29 +257,77 @@
                     </div>
                     <!-- ======================================================================================================================================== -->
                     <!-- new-participate area  -->
-
                     <div class="col-auto px-0" id="new-participate" style="display: none;">
                         <h1 class="my-2">أختر فئة المشاركة</h1>
                         <div class="row">
-                            @foreach (var item in catogery.GetAllCatogery())
-                           {
-                                <div class="btn-div col-md-4 col-sm-6">
+                            <div class="btn-div col-md-4 col-sm-6">
                                 <div class="my-4" style="position: relative;z-index: -1;">
-                                    <a asp-action="newparricipateexam" asp-controller="Home" asp-route-id=@item.Id>
-                                    <button  type="button" class="btn btn-primary w-100">@item.Name </button>
-                                   
-                                    </a>
+                                    <button type="button" class="btn btn-primary w-100">الفئات
+                                        المؤسسية</button>
                                     <div class="help-tip">
                                         <h5>
-                                            <p class="mb-0 ">@item.Note</p>
-                                            
+                                            <p class="mb-0 ">أولا : أفضل منشأة تعدينية في دعم االقتصاد الوطني</p>
+                                            <p class="mb-0 ">ثانيا : المنشاة الرائدة في عمليات التعدين الُمستدام</p>
+                                            <p class="mb-0 ">ثالثا: أفضل منشآه في النقل الُمستدام</p>
+                                            <p class="mb-0 ">رابعا: المؤسسة الرائدة في دعم قضايا التغيرالُمناخي</p>
+                                            <p class="mb-0 ">خامسا :درع التشجير في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سادسا : درع الامن والسالمة في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سابعا: أفضل مؤسسة تعدينية في المسؤولية المجتمعية</p>
                                         </h5>
                                     </div>
                                 </div>
                             </div>
-                           }
-                           
-                           
+                            <div class="btn-div col-md-4 col-sm-6">
+                                <div class="my-4" style="position: relative;z-index: -1;">
+                                    <button type="button" class="btn btn-primary w-100">مبادرات
+                                        ودراسات</button>
+                                    <div class="help-tip">
+                                        <h5>
+                                            <p class="mb-0 ">أولا : أفضل منشأة تعدينية في دعم االقتصاد الوطني</p>
+                                            <p class="mb-0 ">ثانيا : المنشاة الرائدة في عمليات التعدين الُمستدام</p>
+                                            <p class="mb-0 ">ثالثا: أفضل منشآه في النقل الُمستدام</p>
+                                            <p class="mb-0 ">رابعا: المؤسسة الرائدة في دعم قضايا التغيرالُمناخي</p>
+                                            <p class="mb-0 ">خامسا :درع التشجير في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سادسا : درع الامن والسالمة في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سابعا: أفضل مؤسسة تعدينية في المسؤولية المجتمعية</p>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-div col-md-4 col-sm-6">
+                                <div class="my-4" style="position: relative;z-index: -1;">
+                                    <button type="button" class="btn btn-primary w-100">الفئات
+                                        الفردية</button>
+                                    <div class="help-tip">
+                                        <h5>
+                                            <p class="mb-0 ">أولا : أفضل منشأة تعدينية في دعم االقتصاد الوطني</p>
+                                            <p class="mb-0 ">ثانيا : المنشاة الرائدة في عمليات التعدين الُمستدام</p>
+                                            <p class="mb-0 ">ثالثا: أفضل منشآه في النقل الُمستدام</p>
+                                            <p class="mb-0 ">رابعا: المؤسسة الرائدة في دعم قضايا التغيرالُمناخي</p>
+                                            <p class="mb-0 ">خامسا :درع التشجير في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سادسا : درع الامن والسالمة في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سابعا: أفضل مؤسسة تعدينية في المسؤولية المجتمعية</p>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-div col-md-4 col-sm-6">
+                                <div class="my-4" style="position: relative;z-index: -1;">
+                                    <button type="button" class="btn btn-primary w-100">الفئات
+                                        الفردية</button>
+                                    <div class="help-tip">
+                                        <h5>
+                                            <p class="mb-0 ">أولا : أفضل منشأة تعدينية في دعم االقتصاد الوطني</p>
+                                            <p class="mb-0 ">ثانيا : المنشاة الرائدة في عمليات التعدين الُمستدام</p>
+                                            <p class="mb-0 ">ثالثا: أفضل منشآه في النقل الُمستدام</p>
+                                            <p class="mb-0 ">رابعا: المؤسسة الرائدة في دعم قضايا التغيرالُمناخي</p>
+                                            <p class="mb-0 ">خامسا :درع التشجير في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سادسا : درع الامن والسالمة في المنشآت التعدينية</p>
+                                            <p class="mb-0 ">سابعا: أفضل مؤسسة تعدينية في المسؤولية المجتمعية</p>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -298,17 +340,17 @@
 
 
     <!-- bootstrap script include  -->
-    <script src="~/price-master/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- dropify script include  -->
-    <script src="~/price-master/js/dropify.min.js"></script>
+    <script src="js/dropify.min.js"></script>
     <!-- jqeury script include  -->
-    <script src="~/price-master/js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <!-- fancybox script include  -->
-    <script src="~/price-master/js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
     <!-- wow script include -->
-    <script src="~/price-master/js/wow.min.js"></script>
+    <script src="js/wow.min.js"></script>
     <!-- main js script include  -->
-    <script src="~/price-master/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

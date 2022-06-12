@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Batabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220611103647_first")]
-    partial class first
+    [Migration("20220612213156_ab")]
+    partial class ab
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Batabase.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Batabase.Entities.Catogery", b =>
+            modelBuilder.Entity("DataModel.Entities.Catogery", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace Batabase.Migrations
                     b.ToTable("Catogery");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.Standard", b =>
+            modelBuilder.Entity("DataModel.Entities.Standard", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,6 +52,9 @@ namespace Batabase.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Fk_SubCatogery");
@@ -59,7 +62,27 @@ namespace Batabase.Migrations
                     b.ToTable("Standard");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.User", b =>
+            modelBuilder.Entity("DataModel.Entities.StanderQueqsion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Fk_Standard")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Queqsion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Fk_Standard");
+
+                    b.ToTable("StanderQueqsion");
+                });
+
+            modelBuilder.Entity("DataModel.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,27 +103,7 @@ namespace Batabase.Migrations
                     b.ToTable("user");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.UserStanderFils", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Fk_UserStander")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Fk_UserStander");
-
-                    b.ToTable("UserStanderFils");
-                });
-
-            modelBuilder.Entity("Batabase.Entities.User_Standerd", b =>
+            modelBuilder.Entity("DataModel.Entities.User_Standerd", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,6 +128,9 @@ namespace Batabase.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("file")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("pointOfStrong")
                         .HasColumnType("nvarchar(max)");
 
@@ -139,7 +145,7 @@ namespace Batabase.Migrations
                     b.ToTable("User_Standerd");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.subCatogery", b =>
+            modelBuilder.Entity("DataModel.Entities.subCatogery", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -159,35 +165,35 @@ namespace Batabase.Migrations
                     b.ToTable("subCatogery");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.Standard", b =>
+            modelBuilder.Entity("DataModel.Entities.Standard", b =>
                 {
-                    b.HasOne("Batabase.Entities.subCatogery", "subCatogery")
+                    b.HasOne("DataModel.Entities.subCatogery", "subCatogery")
                         .WithMany()
                         .HasForeignKey("Fk_SubCatogery");
 
                     b.Navigation("subCatogery");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.UserStanderFils", b =>
+            modelBuilder.Entity("DataModel.Entities.StanderQueqsion", b =>
                 {
-                    b.HasOne("Batabase.Entities.User_Standerd", "User_Standerd")
-                        .WithMany()
-                        .HasForeignKey("Fk_UserStander");
-
-                    b.Navigation("User_Standerd");
-                });
-
-            modelBuilder.Entity("Batabase.Entities.User_Standerd", b =>
-                {
-                    b.HasOne("Batabase.Entities.Standard", "Standard")
+                    b.HasOne("DataModel.Entities.Standard", "Standard")
                         .WithMany()
                         .HasForeignKey("Fk_Standard");
 
-                    b.HasOne("Batabase.Entities.User", "Users")
+                    b.Navigation("Standard");
+                });
+
+            modelBuilder.Entity("DataModel.Entities.User_Standerd", b =>
+                {
+                    b.HasOne("DataModel.Entities.Standard", "Standard")
+                        .WithMany()
+                        .HasForeignKey("Fk_Standard");
+
+                    b.HasOne("DataModel.Entities.User", "Users")
                         .WithMany()
                         .HasForeignKey("Fk_Teacher");
 
-                    b.HasOne("Batabase.Entities.User", "User")
+                    b.HasOne("DataModel.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("Fk_User");
 
@@ -198,9 +204,9 @@ namespace Batabase.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Batabase.Entities.subCatogery", b =>
+            modelBuilder.Entity("DataModel.Entities.subCatogery", b =>
                 {
-                    b.HasOne("Batabase.Entities.Catogery", "Catogery")
+                    b.HasOne("DataModel.Entities.Catogery", "Catogery")
                         .WithMany()
                         .HasForeignKey("Fk_Catogery");
 

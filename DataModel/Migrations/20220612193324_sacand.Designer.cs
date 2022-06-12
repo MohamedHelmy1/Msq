@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Batabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220611103647_first")]
-    partial class first
+    [Migration("20220612193324_sacand")]
+    partial class sacand
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,9 @@ namespace Batabase.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("Fk_UserStander")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ids")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")

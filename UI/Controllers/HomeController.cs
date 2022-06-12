@@ -23,8 +23,9 @@ namespace UI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult newparricipateexam( int id)
         {
+            ViewBag.id = id;
             return View();
         }
 

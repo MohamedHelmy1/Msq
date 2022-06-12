@@ -1,0 +1,195 @@
+﻿
+@{
+    Layout = null;
+}
+@inject BLL.catogeryRep.ICatogeryRep catogery
+@inject BLL.Stander.IStanderRep Stander
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a website for siling machiens">
+    <!-- link bootstrab css -->
+    <link rel="stylesheet" href="~/price-master/css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <!-- link fontawesome css -->
+    <link rel="stylesheet" href="~/price-master/css/all.css">
+    <!-- link dropify css  -->
+    <link rel="stylesheet" href="~/price-master/css/dropify.min.css">
+    <!-- link animation css  -->
+    <link rel="stylesheet" href="~/price-master/css/animate.min.css">
+    <!-- google font link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- custom style  -->
+    <link rel="stylesheet" href="~/price-master/css/style.css">
+    <title>Home</title>
+</head>
+
+<body>
+    @{
+        int id = ViewBag.id;
+        var data = catogery.getUrlCatagery(id);
+       
+    }
+    <div class="participate-exam">
+        <div class="container-fluid px-0">
+            <div class="header-of-the-tab">
+                <button type="button" class="btn btn-lg btn-primary" disabled> @data.CatogeryName</button>
+                <button type="button" class="btn btn-lg btn-primary fs-6" disabled>أولا : @data.SubCatogeryName
+                </button>
+            </div>
+            <div class="the-sidbar mt-3">
+                <div class="container-fluid">
+                    <div class="row flex-nowrap">
+                        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white shadow" style="overflow: hidden;">
+                            <div
+                                class="d-flex flex-column align-items-center align-items-sm-start px-2 pt-2 text-white min-vh-100">
+                                <h5
+                                    class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none mx-0 flex-md-row flex-sm-column">
+                                    المعايير
+                                </h5>
+                                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100"
+                                    id="menu">
+                                    @foreach (var item in Stander.GetAllStander(id))
+                                   {
+                                        <li class="nav-item marked">
+                                        <a href="#" class="nav-link px-0 ">
+                                            <div class="txt">
+                                                <p class="ms-1 mb-0 ">@item.Number</p>
+                                                <p class=" ms-1 mb-0 text-dark">@item.Name</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                   }
+                                   
+                                 
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- ========================================================================================================================= -->
+                        <!-- the content area  -->
+                        <div class="tab-content col">
+                            <!-- ======================================================================================================================================== -->
+                            <!-- content  -->
+                            <div class="content">
+                                <h6>ينبغي على المنشآة / المؤسسة أن توفر أدلة على :</h6>
+                                <div class="row mt-4">
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-box">
+                                                    <div class="text-content d-flex">
+                                                        <h4 class="number">1</h4>
+                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
+                                                        </h4>
+                                                    </div>
+                                                    <div class="text-content d-flex">
+                                                        <h4 class="number">2</h4>
+                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
+                                                        </h4>
+                                                    </div>
+                                                    <div class="text-content d-flex">
+                                                        <h4 class="number">3</h4>
+                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <textarea maxlength="200"
+                                                    placeholder="أكتب مشاركتك بما لا يزيد عن 200 كلمة"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <h6>إرفاق دليل المعيار (يمكنك رفع دليل في كل مرة)</h6>
+                                                <div class="mb-3">
+                                                    <input class="form-control form-control-sm" type="file"
+                                                        id="formFileSm">
+                                                    <div
+                                                        class="btns-group mt-3 d-flex align-items-center justify-content-end gap-2">
+                                                        <button type="button"
+                                                            class="save btn btn-outline-success">حفظ</button>
+                                                        <button type="button"
+                                                            class="cancel btn btn-outline-danger">إالغاء</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="attachments ">
+                                            <div class="main-btn">
+                                                <button type="button" class="btn btn-lg btn-primary w-100"
+                                                    disabled>المرفقات</button>
+                                            </div>
+                                            <div
+                                                class="other-btn my-3 d-flex align-items-center gap-2 justify-content-center">
+                                                <button type="button"
+                                                    class="attachment btn btn-primary btn-sm w-100">المرفق
+                                                    .pdf</button>
+                                                <button type="button"
+                                                    class="delete btn btn-primary btn-sm w-100">حذف</button>
+                                            </div>
+                                            <div
+                                                class="other-btn my-3 d-flex align-items-center gap-2 justify-content-center">
+                                                <button type="button"
+                                                    class="attachment btn btn-primary btn-sm w-100">image.jpg</button>
+                                                <button type="button"
+                                                    class="delete btn btn-primary btn-sm w-100">حذف</button>
+                                            </div>
+                                            <div
+                                                class="other-btn my-3 d-flex align-items-center gap-2 justify-content-center">
+                                                <button type="button"
+                                                    class="attachment btn btn-primary btn-sm w-100">file.rar</button>
+                                                <button type="button"
+                                                    class="delete btn btn-primary btn-sm w-100">حذف</button>
+                                            </div>
+                                        </div>
+                                        <div class="attach-preveiw">
+                                            <img src="~/price-master/imgs/logo.png" class="img-thumbnail" alt="...">
+                                        </div>
+                                        <div
+                                            class="next-page-or-prev w-100 d-flex align-items-center justify-content-center gap-2 my-3">
+                                            <button type="button" class="nxt-page btn btn-outline-success w-100">حفظ
+                                                وانتقال</button>
+                                            <button type="button" class="prev-page btn btn-outline-danger w-100">رجوع
+                                                للخلف</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- bootstrap script include  -->
+    <script src="~/price-master/js/bootstrap.min.js"></script>
+    <!-- dropify script include  -->
+    <script src="~/price-master/js/dropify.min.js"></script>
+    <!-- jqeury script include  -->
+    <script src="~/price-master/js/jquery-3.5.1.min.js"></script>
+    <!-- fancybox script include  -->
+    <script src="~/price-master/js/jquery.fancybox.min.js"></script>
+    <!-- wow script include -->
+    <script src="~/price-master/js/wow.min.js"></script>
+    <!-- main js script include  -->
+    <script src="~/price-master/js/main.js"></script>
+</body>
+
+</html>

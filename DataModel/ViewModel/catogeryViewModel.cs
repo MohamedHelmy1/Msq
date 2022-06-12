@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataModel.Entities
+namespace DataModel.ViewModel
 {
-    public class User
+    public class catogeryViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
-        
+        public string Note { get; set; }
     }
 }
