@@ -1,8 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = null;
+    int id = ViewBag.id;
 }
 @inject BLL.catogeryRep.ICatogeryRep catogery
+@inject BLL.Stander.IStanderRep Stander
+
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -153,14 +156,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                @foreach (var item in Stander.GetMyStander(id))
+                               {
+                                   <tr>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">الفئات المؤسسية</h4>
+                                            <h4 class="category mb-0">@item.CatogeryName</h4>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">افضل منشأة تعدينية في الوطن العربي</p>
+                                        <p class="categoties fw-bold fs-6 mb-0">@item.SubCatogeryName</p>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-rounded">
@@ -168,36 +173,9 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">الفئات الفردية</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">افضل مهندس \ مشرف تعدين</p>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-rounded">
-                                            تعديل
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">المبادرات والدراسات</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">درع التشجير في المنشأت التعدينية</p>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-rounded">
-                                            تعديل
-                                        </button>
-                                    </td>
-                                </tr>
+                               }
+                                
+                               
                             </tbody>
                         </table>
                     </div>
@@ -213,14 +191,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                 @foreach (var item in Stander.GetMyStander(id))
+                                   {
+                                        <tr>
+                                   
                                     <td>
                                         <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">الفئات المؤسسية</h4>
+                                            <h4 class="category mb-0">@item.CatogeryName</h4>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">افضل منشأة تعدينية في الوطن العربي</p>
+                                        <p class="categoties fw-bold fs-6 mb-0">@item.SubCatogeryName</p>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-rounded">
@@ -228,36 +209,9 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">الفئات الفردية</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">افضل مهندس \ مشرف تعدين</p>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-rounded">
-                                            النتيجة
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <h4 class="category mb-0">المبادرات والدراسات</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="categoties fw-bold fs-6 mb-0">درع التشجير في المنشأت التعدينية</p>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-rounded">
-                                            النتيجة
-                                        </button>
-                                    </td>
-                                </tr>
+                                   }
+                               
+                               
                             </tbody>
                         </table>
                     </div>

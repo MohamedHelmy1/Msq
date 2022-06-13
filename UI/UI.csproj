@@ -20,4 +20,8 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\File\" />
+  </ItemGroup>
+
 </Project>

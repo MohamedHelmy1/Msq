@@ -8,6 +8,8 @@ namespace DataModel.ViewModel
 {
     public class GetUrlCatagery
     {
+        public int id { get; set; }
+
         public string CatogeryName { get; set; }
         public string SubCatogeryName { get; set; }
 

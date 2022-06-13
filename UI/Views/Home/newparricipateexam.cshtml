@@ -1,13 +1,16 @@
 ﻿
 @{
     Layout = null;
+    int z = 1;
+    int firstStander = 1;
 }
 @inject BLL.catogeryRep.ICatogeryRep catogery
 @inject BLL.Stander.IStanderRep Stander
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
+    
+     <!-- update this by the StanderId in JaveScript Code -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,14 +63,32 @@
                                     id="menu">
                                     @foreach (var item in Stander.GetAllStander(id))
                                    {
-                                        <li class="nav-item marked">
-                                        <a href="#" class="nav-link px-0 ">
+                                       if (z==1)
+                                        {
+                                            firstStander = item.Id;
+                                            <li class="nav-item marked">
+                                        <a onclick="GetQuze(@item.Id)" id="stander" href="#" class="nav-link px-0 ">
+                                             <input id="ThisStander" type="hidden"value="@item.Id"/>
                                             <div class="txt">
                                                 <p class="ms-1 mb-0 ">@item.Number</p>
                                                 <p class=" ms-1 mb-0 text-dark">@item.Name</p>
                                             </div>
                                         </a>
-                                    </li>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                             <li class="nav-item">
+                                        <a onclick="GetQuze(@item.Id)" href="#" class="nav-link px-0 ">
+                                            <div class="txt">
+                                                <p class="ms-1 mb-0 ">@item.Number</p>
+                                                <p class=" ms-1 mb-0 text-dark">@item.Name</p>
+                                            </div>
+                                        </a>
+                                            </li>
+                                        }
+                                        z++;
+
                                    }
                                    
                                  
@@ -86,26 +107,26 @@
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-box">
-                                                    <div class="text-content d-flex">
-                                                        <h4 class="number">1</h4>
-                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
+                                                <div id="quiz" class="text-box">
+                                                    @{
+                                                        int number = 0;
+                                                    }
+                                                    @foreach (var item in Stander.GetAllStanderQuection(firstStander))
+                                                    {
+                                                        
+                                                        number++;
+                                                        <div class="text-content d-flex">
+                                                        <h4 class="number">@number</h4>
+                                                        <h4 class="text">@item.Queqsion
                                                         </h4>
                                                     </div>
-                                                    <div class="text-content d-flex">
-                                                        <h4 class="number">2</h4>
-                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
-                                                        </h4>
-                                                    </div>
-                                                    <div class="text-content d-flex">
-                                                        <h4 class="number">3</h4>
-                                                        <h4 class="text">دعم الاٌقتصاد من خلال مساهمة فعاله في التنمية
-                                                        </h4>
-                                                    </div>
+                                                   
+                                                    }
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <textarea maxlength="200"
+                                                <textarea id="text" maxlength="200"
                                                     placeholder="أكتب مشاركتك بما لا يزيد عن 200 كلمة"></textarea>
                                             </div>
                                             <div class="col-12">
@@ -159,7 +180,7 @@
                                         </div>
                                         <div
                                             class="next-page-or-prev w-100 d-flex align-items-center justify-content-center gap-2 my-3">
-                                            <button type="button" class="nxt-page btn btn-outline-success w-100">حفظ
+                                            <button id="Save" type="button" class="nxt-page btn btn-outline-success w-100">حفظ
                                                 وانتقال</button>
                                             <button type="button" class="prev-page btn btn-outline-danger w-100">رجوع
                                                 للخلف</button>
@@ -176,7 +197,7 @@
 
     </div>
 
-
+    
 
     <!-- bootstrap script include  -->
     <script src="~/price-master/js/bootstrap.min.js"></script>
@@ -193,3 +214,76 @@
 </body>
 
 </html>
+<script>
+$(document).ready(function(){
+  //  const [file] = imgInp.files
+  //if (file) {
+  //  blah.src = URL.createObjectURL(file)
+  //}
+  // $("#but_upload").click(function(){
+  // });
+   
+    $("#Save").click(function(){
+
+        var fd = new FormData();
+        var files = $('#formFileSm')[0].files;
+        var Name=$('#text').val();
+        var Fk_Standard=$('#ThisStander').val();//update this by the StanderId
+
+        // Check file selected or not
+        if(files.length > 0 ){
+           fd.append('files',files[0]);
+             fd.append('Name',Name);
+               fd.append('Fk_Standard',Fk_Standard);
+           $.ajax({
+              url: '/Home/AddRequest',
+              type: 'post',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                 if(response != 0){
+                    alert ("saved Sucess")
+                 }else{
+                    alert('file not uploaded');
+                 }
+              },
+           });
+        }else{
+           alert("Please select a file.");
+        }
+    });
+});
+function GetQuze(id){
+    $('#ThisStander').val(id);
+     
+               $.ajax({
+              url: '/Home/GetQuection?id='+id,
+              type: 'Get',
+              
+              contenttype: "application/json;charset=utf-8",
+               dataType: "json",
+              success: function(response){
+                  var html = '';
+                var i = 1;
+                $.each(response, function (key, item) {
+                     
+                                                        
+                                                    
+                    html += '<div class="text-content d-flex">';
+                    html += '<h4 class="number">' + i++ + '</h4>';
+                    html += '<h4 class="text">' + item.queqsion + '</h4>';
+
+                   
+
+                    html += '</div>';
+                });
+                $('#quiz').html(html);
+                $("#formFileSm").val("");
+                $("#text").val("");
+
+              },
+           });
+  
+}
+</script>
