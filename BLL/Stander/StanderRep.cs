@@ -56,7 +56,7 @@ namespace BLL.Stander
             List<int?>SubCatogery=new List<int?>();
             foreach (var item in data)
             {
-                var Stander = db.Standard.Where(x => x.Id ==item).Select(x=>x.Fk_SubCatogery).Distinct();
+                var Stander = db.Standard.Where(x => x.Id ==item).Select(x =>x.Fk_SubCatogery).Distinct();
                 foreach (var item1 in Stander)
                 {
                     SubCatogery.Add(item1);
@@ -65,7 +65,7 @@ namespace BLL.Stander
             }
             
             List<GetUrlCatagery>catageries=new List<GetUrlCatagery>();
-            foreach (var item in SubCatogery)
+            foreach (var item in SubCatogery.Distinct())
             {
                 var data8= db.subCatogery.Where(x => x.id == item).FirstOrDefault();
                 GetUrlCatagery catagery=new GetUrlCatagery();
