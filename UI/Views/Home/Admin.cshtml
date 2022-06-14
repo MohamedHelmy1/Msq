@@ -51,14 +51,14 @@
 
                 <div class="tab-content">
                     <div id="signup">
-                        <form asp-action="login" asp-controller="Home" enctype="multipart/form-data" method="post">
+                        <form asp-action="addAdmin" asp-controller="Home" enctype="multipart/form-data" method="post">
 
                             <div class="top-row">
                                 <div class="field-wrap">
                                     <label>
                                         الدولة<span class="req">*</span>
                                     </label>
-                                    <input type="text" asp-for="cuntery" required autocomplete="off" />
+                                    <input type="text" asp-for="cuntery" name="cuntery" required autocomplete="off" />
                                     <span asp-validation-for="cuntery" class="text-danger"></span>
                                 </div>
 
@@ -82,15 +82,15 @@
                                 <label>
                                     رقم الهاتف<span class="req">*</span>
                                 </label>
-                                <input type="text" asp-for="phone" required autocomplete="off" />
-                                <span asp-validation-for="phone" class="text-danger"></span>
+                                <input type="text" asp-for="phone" name="phone" required autocomplete="off" />
+                                <span asp-validation-for="phone"  class="text-danger"></span>
                             </div>
 
                             <div class="field-wrap">
                                 <label>
                                     المنصب الوظيفي<span class="req">*</span>
                                 </label>
-                                <input type="text" asp-for="job" required autocomplete="off" />    <span asp-validation-for="job" class="text-danger"></span>
+                                <input type="text" asp-for="job" name="job" required autocomplete="off" />    <span asp-validation-for="job" class="text-danger"></span>
                             </div>
 
                             <div class="field-wrap">
@@ -108,7 +108,7 @@
                     </div>
                     <!-- login form  -->
                     <div id="login">
-                        <form asp-action="addAdmin" asp-controller="Home" enctype="multipart/form-data" method="post">
+                        <form asp-action="login" asp-controller="Home" enctype="multipart/form-data" method="post">
 
                             <div class="field-wrap">
                                 <label>

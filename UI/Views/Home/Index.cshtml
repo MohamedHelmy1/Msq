@@ -43,7 +43,7 @@
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white shadow" style="overflow: hidden;">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-md-3 px-sm-2 pt-2 text-white min-vh-100">
                         <h4 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none mx-0 flex-md-row flex-sm-column">
-                            <span>مرحبا :</span><span class="fs-6 mx-3 fw-light text-danger">اسم المشارك</span>
+                            <span>مرحبا :</span><span  class="fs-6 mx-3 fw-light text-danger">@Model.Name</span>
                         </h4>
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
@@ -105,7 +105,7 @@
                                 <label for="name" class="form-label">الأسم:</label>
                             </div>
                             <div class="input col-md-8 col-sm-12">
-                                <input type="text" class="form-control" id="name" asp-for="Name" value="أسم المشارك">
+                                <input type="text" class="form-control" id="name" asp-for="Name" >
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center justify-content-start">
@@ -113,7 +113,7 @@
                                 <label for="Email" class="form-label">البريد الإلكتروني:</label>
                             </div>
                             <div class="input col-md-8 col-sm-12">
-                                <input type="text"  asp-for="Email"class="form-control" id="Email" value="example@mail.com">
+                                <input type="text"  asp-for="Email"class="form-control" id="Email" >
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center justify-content-start">
@@ -121,7 +121,7 @@
                                 <label for="phone" class="form-label">الهاتف:</label>
                             </div>
                             <div class="input col-md-8 col-sm-12">
-                                <input type="text" asp-for="phone"class="form-control" id="phone" value="01098766789">
+                                <input type="text" asp-for="phone"class="form-control" id="phone" >
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center justify-content-start">
@@ -129,7 +129,7 @@
                                 <label for="position"  class="form-label">المنصب الوظيفي:</label>
                             </div>
                             <div class="input col-md-8 col-sm-12">
-                                <input type="text" asp-for="job" class="form-control" id="position" value="منصب رقم 9">
+                                <input type="text" asp-for="job" class="form-control" id="position" >
                             </div>
                         </div>
                         <div class="row mb-3 align-items-center justify-content-start">
@@ -137,7 +137,7 @@
                                 <label for="country" class="form-label">الدولة:</label>
                             </div>
                             <div class="input col-md-8 col-sm-12">
-                                <input type="text" asp-for="cuntery" class="form-control" id="country" value="مصر">
+                                <input type="text" asp-for="cuntery" class="form-control" id="country" >
                             </div>
                         </div>
                         
