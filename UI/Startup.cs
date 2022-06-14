@@ -1,5 +1,7 @@
 using BLL.catogeryRep;
+using BLL.Mapper;
 using BLL.Stander;
+using BLL.Usres;
 using DataModel.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,13 +29,14 @@ namespace UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            });
+            }); services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
             services.AddScoped<IStanderRep, StanderRep>();
-            services.AddScoped<ICatogeryRep, CatogeryRep>();
+            services.AddScoped<ICatogeryRep, CatogeryRep>(); services.AddScoped<IUser, UserREp>();
 
         }
 
@@ -56,7 +59,7 @@ namespace UI
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
