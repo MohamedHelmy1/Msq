@@ -66,7 +66,7 @@
                                        if (z==1)
                                         {
                                             firstStander = item.Id;
-                                            <li class="nav-item marked">
+                                            <li  class="nav-item marked @z">
                                         <a onclick="GetQuze(@item.Id)" id="stander" href="#" class="nav-link px-0 ">
                                              <input id="ThisStander" type="hidden"value="@item.Id"/>
                                             <div class="txt">
@@ -78,7 +78,7 @@
                                         }
                                         else
                                         {
-                                             <li class="nav-item">
+                                             <li class="nav-item @z">
                                         <a onclick="GetQuze(@item.Id)" href="#" class="nav-link px-0 ">
                                             <div class="txt">
                                                 <p class="ms-1 mb-0 ">@item.Number</p>
@@ -136,7 +136,7 @@
                                                         id="formFileSm">
                                                     <div
                                                         class="btns-group mt-3 d-flex align-items-center justify-content-end gap-2">
-                                                        <button type="button"
+                                                        <button id="but_upload" type="button"
                                                             class="save btn btn-outline-success">حفظ</button>
                                                         <button type="button"
                                                             class="cancel btn btn-outline-danger">إالغاء</button>
@@ -176,7 +176,7 @@
                                             </div>
                                         </div>
                                         <div class="attach-preveiw">
-                                            <img src="~/price-master/imgs/logo.png" class="img-thumbnail" alt="...">
+                                            <img src="~/price-master/imgs/logo.png" id="blah" class="img-thumbnail" alt="...">
                                         </div>
                                         <div
                                             class="next-page-or-prev w-100 d-flex align-items-center justify-content-center gap-2 my-3">
@@ -218,12 +218,18 @@
 </html>
 <script>
 $(document).ready(function(){
-  //  const [file] = imgInp.files
-  //if (file) {
-  //  blah.src = URL.createObjectURL(file)
-  //}
-  // $("#but_upload").click(function(){
-  // });
+    $('#imageUp').hide();
+    $('#vedioUp').hide();
+
+ 
+   $("#but_upload").click(function(){
+       var a=formFileSm.value.split('.')[1];
+      
+          const [file] = formFileSm.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+   });
    
     $("#Save").click(function(){
 
