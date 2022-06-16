@@ -136,6 +136,12 @@ namespace UI.Controllers
             ViewBag.id = id;
             return View();
         }
+        public IActionResult newparricipateexams(int id)
+        {
+
+            ViewBag.id = 1;
+            return View();
+        }
         [HttpPost]
         public IActionResult AddRequest(UserStanderViewmodel model)
         {
