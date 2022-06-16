@@ -19,6 +19,7 @@ namespace BLL.Stander
 
         public bool AddUserStander(UserStanderViewmodel model)
         {
+           
             User_Standerd obj = new User_Standerd();
             obj.file = model.file;
             obj.Fk_Standard = model.Fk_Standard;
@@ -50,6 +51,17 @@ namespace BLL.Stander
             });
         }
 
+        public UserStanderViewmodel GetbyId(int id ,int userId )
+        {
+            return db.User_Standerd.Where(x=>x.Fk_Standard==id &&x.Fk_User== userId).Select(x => new UserStanderViewmodel
+            {
+                Id= x.Id,  
+                Name= x.Name,
+                file=x.file
+                
+            }).FirstOrDefault();
+        }
+
         public IEnumerable<GetUrlCatagery> GetMyStander(int id)
         {
             var data = db.User_Standerd.Where(x => x.Fk_User == id).Select(z=>z.Fk_Standard);
@@ -77,6 +89,14 @@ namespace BLL.Stander
            
 
             return catageries;
+        }
+
+        public bool update(UserStanderViewmodel model)
+        {
+            var data=db.User_Standerd.Where(x=>x.Id==model.Id).FirstOrDefault();
+            data.Name = model.Name;
+            data.file = model.file;
+            return true;
         }
     }
 }

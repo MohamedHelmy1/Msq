@@ -13,7 +13,10 @@ namespace BLL.Stander
         IEnumerable<GetUrlCatagery> GetMyStander(int id);
 
         IEnumerable<StanderQuectionViewModel> GetAllStanderQuection(int id);
-        bool AddUserStander(UserStanderViewmodel model); 
+        bool AddUserStander(UserStanderViewmodel model);
+        bool update(UserStanderViewmodel model);
+        UserStanderViewmodel GetbyId(int id, int userId);
+
 
 
     }

@@ -67,8 +67,12 @@
                                         {
                                             firstStander = item.Id;
                                             <li  class="nav-item marked @z">
-                                        <a onclick="GetQuze(@item.Id)" id="stander" href="#" class="nav-link px-0 ">
+                                        <a  id="stander" href="#" class="nav-link px-0 ">
                                              <input id="ThisStander" type="hidden"value="@item.Id"/>
+                                             <input class="n" type="hidden"value="@item.Id"/>
+                                             <input class="z" type="hidden"value="@z"/>
+
+
                                             <div class="txt">
                                                 <p class="ms-1 mb-0 ">@item.Number</p>
                                                 <p class=" ms-1 mb-0 text-dark">@item.Name</p>
@@ -79,7 +83,11 @@
                                         else
                                         {
                                              <li class="nav-item @z">
-                                        <a onclick="GetQuze(@item.Id)" href="#" class="nav-link px-0 ">
+                                        <a  href="#" class="nav-link px-0 ">
+                                             <input class="n" type="hidden"value="@item.Id"/>
+                                             <input class="z" type="hidden"value="@z"/>
+
+
                                             <div class="txt">
                                                 <p class="ms-1 mb-0 ">@item.Number</p>
                                                 <p class=" ms-1 mb-0 text-dark">@item.Name</p>
@@ -182,7 +190,7 @@
                                             class="next-page-or-prev w-100 d-flex align-items-center justify-content-center gap-2 my-3">
                                             <button id="Save" type="button" class="nxt-page btn btn-outline-success w-100">حفظ
                                                 وانتقال</button>
-                                            <button type="button" class="prev-page btn btn-outline-danger w-100">رجوع
+                                            <button type="button" id="left" class="prev-page btn btn-outline-danger w-100">رجوع
                                                 للخلف</button>
 
                                         </div>
@@ -218,12 +226,16 @@
 </html>
 <script>
 $(document).ready(function(){
+    
     $('#imageUp').hide();
     $('#vedioUp').hide();
-
- 
+   
+    var a=@z-1;
+   
+    var cont=@z - @z +1;
+   
    $("#but_upload").click(function(){
-       var a=formFileSm.value.split('.')[1];
+       var aa=formFileSm.value.split('.')[1];
       
           const [file] = formFileSm.files
   if (file) {
@@ -239,7 +251,7 @@ $(document).ready(function(){
         var Fk_Standard=$('#ThisStander').val();//update this by the StanderId
 
         // Check file selected or not
-        if(files.length > 0 ){
+        if(files.length > 0&& Name!=null ){
            fd.append('files',files[0]);
              fd.append('Name',Name);
                fd.append('Fk_Standard',Fk_Standard);
@@ -252,13 +264,27 @@ $(document).ready(function(){
               success: function(response){
                  if(response != 0){
                     alert ("saved Sucess")
+                    cont=cont+1;
+                    var id=$("."+cont+" .n").val();
+                   
+                     $("li").removeClass("marked");
+                     $("."+cont).addClass("marked");
+                     
+                    GetQuze(id)
                  }else{
                     alert('file not uploaded');
                  }
               },
            });
         }else{
-           alert("Please select a file.");
+           alert("Please Insert data and select a file.");
+        }
+    });
+    $("#left").click(function(){
+        if(cont>1)
+        {
+            var information=@Stander.GetbyId(1,1);
+
         }
     });
 });
@@ -294,4 +320,5 @@ function GetQuze(id){
            });
   
 }
+
 </script>
