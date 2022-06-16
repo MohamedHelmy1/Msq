@@ -139,7 +139,7 @@ namespace UI.Controllers
         public IActionResult newparricipateexams(int id)
         {
 
-            ViewBag.id = 1;
+            ViewBag.id = id;
             return View();
         }
         [HttpPost]
